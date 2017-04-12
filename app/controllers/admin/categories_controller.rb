@@ -9,19 +9,19 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
-    @categories = Product.new(product_params)
+    @categories = Category.new(category_param)
 
-    if @product.save
-      redirect_to [:admin, :products], notice: 'Product created!'
+    if @categories.save
+      redirect_to [:admin, :categories], notice: 'Category created!'
     else
       render :new
     end
   end
 
-  def destroy
-    @product = Product.find params[:id]
-    @product.destroy
-    redirect_to [:admin, :products], notice: 'Product deleted!'
+  def category_param
+    params.require(:category).permit(
+      :name
+    )
   end
 
   private
