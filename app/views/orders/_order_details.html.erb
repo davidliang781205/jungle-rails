@@ -1,0 +1,22 @@
+<% if product = Product.find_by(id: product_id) %>
+  <tr>
+    <td>
+       <%= image_tag product.image.tiny %>
+    </td>
+    <td>
+      <%= product.name %>
+    </td>
+    <td>
+      <%= product.description %>
+    </td>
+    <td>
+      <%= product.price %>
+    </td>
+    <td>
+      <%= quantity %>
+    </td>
+    <td>
+      <%= quantity * product.price %>
+    </td>
+  </tr>
+<% end %>
