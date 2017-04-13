@@ -132,5 +132,46 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+User.create!({
+  first_name:  1,
+  last_name: 1,
+  email: "davidliang781205@gmail.com",
+  password_digest: Digest::SHA1.hexdigest('123')
+})
+
+Review.create!({
+  product_id:  12,
+  user_id: 1,
+  description: "Item12",
+  rating: 5
+})
+
+Review.create!({
+  product_id:  11,
+  user_id: 1,
+  description: "Item11",
+  rating: 3
+})
+
+Review.create!({
+  product_id:  10,
+  user_id: 1,
+  description: "GG",
+  rating: 4
+})
+
+Review.create!({
+  product_id:  9,
+  user_id: 1,
+  description: "item9Rating2",
+  rating: 2
+})
+
+Review.create!({
+  product_id:  8,
+  user_id: 1,
+  description: "item8Rating5",
+  rating: 5
+})
 
 puts "DONE!"
