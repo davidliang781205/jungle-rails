@@ -1,16 +1,13 @@
 <h1>Login</h1>
 
-<%= form_for :session, url: '/login' do |f| %>
-
+<%= form_tag '/login' do %>
   <div class="form-group">
-    <%= f.label :email %>
-    <%= f.text_field :email, class: 'form-control' %>
+    Email: <%= text_field_tag :email, "", class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    Password: <%= password_field_tag :password, "", class: 'form-control' %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, class: 'form-control' %>
-  </div>
   <%= submit_tag "Submit", class: 'btn btn-primary' %>
 
 <% end %>
