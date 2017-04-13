@@ -2,11 +2,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
-
 // App
 @import "products";
-
 // Global
 body {
-  padding-top: 70px;
+    padding-top: 70px;
+    .user-status {
+        float: right;
+        padding-right: 70px;
+    }
 }
