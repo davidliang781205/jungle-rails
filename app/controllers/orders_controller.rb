@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @line_items = LineItem.where(order_id: params[:id])
-    ReceiptEmail.order_receipt(@order).deliver_later
   end
 
   def create
@@ -11,6 +10,7 @@ class OrdersController < ApplicationController
     order  = create_order(charge)
 
     if order.valid?
+      ReceiptEmail.order_receipt(order).deliver_later
       empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
     else

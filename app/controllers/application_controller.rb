@@ -24,6 +24,20 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def logged_in?
+    !current_user.nil?
+  end
+  helper_method :logged_in?
+
+  def require_login
+    unless logged_in?
+      # if we need the user to log in, we send him on his way
+      # but send him back to the current page afterwards.
+      session[:return_to] = request.fullpath
+      redirect_to root_url(subdomain: false), :alert => "Please login"
+    end
+  end
+
   def authorize
     redirect_to '/login' unless current_user
   end

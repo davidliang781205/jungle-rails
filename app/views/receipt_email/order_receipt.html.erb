@@ -1,1 +1,31 @@
-Cooooool!!!
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Order placed, order #: <%= @order.id %></h1>
+    <p>
+      You have successfully placed an order.
+      <table>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+        <% @line_items.each do |item| %>
+          <% product = Product.find(item.product_id) %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= item.quantity %></td>
+            <td><%= product.price %></td>
+          </tr>
+        <% end %>
+      </table>
+    </p>
+    <p>
+      Total: <%= '%.2f' % ((@order.total_cents.to_d) / 100).to_s %>
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

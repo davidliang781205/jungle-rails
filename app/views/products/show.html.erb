@@ -25,6 +25,38 @@
         </dl>
       </div>
     </div>
+    <div class="row">
+      <table class="table">
+        <tr>
+          <th>Rating</th>
+          <th>Description</th>
+          <th>By</th>
+          <th>Action</th>
+        </tr>
+        <% @review.each do |rate| %>
+          <tr>
+            <td><%= rate.rating %></td>
+            <td><%= rate.description %></td>
+            <td><%= rate.user_id %></td>
+            <td></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="row">
+        <%= form_tag "/products/#{@product.id}/reviews" do %>
+          <div class="form-group">
+            Review: <%= select_tag(:rating, options_for_select([1, 2, 3, 4, 5])) %>
+          </div>
+          <div class="form-group">
+            Description: <%= text_area_tag :description, "", class: 'form-control' %>
+          </div>
+
+          <%= submit_tag "Submit", class: 'btn btn-primary' %>
+
+        <% end %>
+    </div>
 
   </article>
 
