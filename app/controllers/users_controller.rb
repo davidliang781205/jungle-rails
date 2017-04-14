@@ -8,7 +8,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/'
     else
-      flash[:error] = 'Registration Error'
+      flash[:error] = user.errors.first * ' '
       redirect_to '/signup'
     end
   end
