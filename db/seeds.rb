@@ -128,7 +128,7 @@ cat3.products.create!({
   name:  'Red Bookshelf',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture3.jpg'),
-  quantity: 23,
+  quantity: 0,
   price: 2_483.75
 })
 
@@ -136,7 +136,7 @@ User.create!({
   first_name:  1,
   last_name: 1,
   email: "davidliang781205@gmail.com",
-  password_digest: Digest::SHA1.hexdigest('123')
+  password_digest: BCrypt::Password.create(123)
 })
 
 Review.create!({

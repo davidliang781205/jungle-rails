@@ -29,6 +29,12 @@ class ApplicationController < ActionController::Base
   end
   helper_method :logged_in?
 
+  def out_of_stock?(id)
+    @product = Product.find id
+    @product.quantity <= 0
+  end
+  helper_method :out_of_stock?
+
   def authorize
     redirect_to '/login' unless current_user
   end
