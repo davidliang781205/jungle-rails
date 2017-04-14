@@ -4,6 +4,8 @@
       <%= image_tag product.image.thumb, alt: product.name %>
       <h4><%= product.name %></h4>
     <% end %>
+    <% rating = Review.where(product_id: product.id).average('rating') %>
+    <h6>Overall rating: <%= rating.nil? ? "No Rating Yet" : rating %></h6>
   </header>
   <p class="description">
     <%= product.description %>

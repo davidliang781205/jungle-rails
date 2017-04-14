@@ -4,6 +4,6 @@ class ReceiptEmail < ActionMailer::Base
   def order_receipt(order)
     @order = order
     @line_items = LineItem.where(order_id: order.id)
-    mail(to: @order.email, subject: "Order Placed: ")
+    mail(to: @order.email, subject: "Order #: #{@order.id}")
   end
 end
